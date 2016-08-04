@@ -51,9 +51,8 @@ zookeeper=<%= z %>
 <% if k['zkport'] -%>
 zookeeper-port=<%= k['zkport'] %>
 <% end -%>
+<% if k['zkpath'] -%>
 zookeeper-path=<%= k['zkpath'] %>
-<% if k['zkoffsets'] -%>
-zookeeper-port=<%= k['zkoffsets'] %>
 <% end -%>
 <% if k['offsetstopic'] -%>
 offsets-topic=<%= k['offsetstopic'] %>
