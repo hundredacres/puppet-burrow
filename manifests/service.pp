@@ -10,5 +10,6 @@ class burrow::service {
     enable     => true,
     hasstatus  => true,
     hasrestart => true,
+    require    => Package[$::burrow::package_name],
   }
 }

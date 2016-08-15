@@ -12,9 +12,9 @@ describe 'burrow' do
           it { is_expected.to compile.with_all_deps }
 
           it { is_expected.to contain_class('burrow::params') }
-          it { is_expected.to contain_class('burrow::install').that_comes_before('burrow::config') }
+          it { is_expected.to contain_class('burrow::install').that_comes_before('Class[burrow::config]') }
           it { is_expected.to contain_class('burrow::config') }
-          it { is_expected.to contain_class('burrow::service').that_subscribes_to('burrow::config') }
+          it { is_expected.to contain_class('burrow::service').that_subscribes_to('Class[burrow::config]') }
 
           it { is_expected.to contain_service('burrow') }
           it { is_expected.to contain_package('burrow').with_ensure('present') }

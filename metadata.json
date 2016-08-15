@@ -1,12 +1,12 @@
 {
-  "name": "hundredacres-burrow",
+  "name": "puppet-burrow",
   "version": "0.1.0",
-  "author": "hundredacres",
-  "summary": "",
+  "author": "Matthew Schmitt",
+  "summary": "Module for managing LinkedIn Burrow",
   "license": "Apache-2.0",
-  "source": "",
-  "project_page": "",
-  "issues_url": "",
+  "source": "https://github.com/hundredacres/puppet-burrow",
+  "project_page": "https://github.com/hundredacres/puppet-burrow",
+  "issues_url": "https://github.com/hundredacres/puppet-burrow/issues",
   "dependencies": [
     {
       "name": "puppetlabs-stdlib",
