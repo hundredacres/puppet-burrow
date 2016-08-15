@@ -6,7 +6,7 @@
 <%= k %>=<%= v %>
 <%- end
 end
-%>
+-%>
 
 [general]
 <% if @logdir -%>
@@ -39,13 +39,13 @@ lock-path=<%= @zookeeper_lock_path %>
 
 <% scope['::burrow::kafka_cluster'].each do |k,v| -%>
 [kafka <%= k['name'] %>]
-<% k['broker'].each do |h| -%>
+<% v['broker'].each do |h| -%>
 broker=<%= h %>
 <% end -%>
 <% if k['broker_port'] -%>
 broker-port=<%= k['broker_port'] %>
 <% end -%>
-<% k['zookeeper'].each do |z| -%>
+<% v['zookeeper'].each do |z| -%>
 zookeeper=<%= z %>
 <% end -%>
 <% if k['zkport'] -%>
@@ -70,8 +70,8 @@ zookeeper=<%= z %>
 zookeeper-port=<%= s['zkport'] %>
 <% end -%>
 zookeeper-path=<%= s['zkpath'] %>
-<% end %>
-<% end %>
+<% end -%>
+<% end -%>
 
 [tickers]
 broker-offsets=60
@@ -84,7 +84,7 @@ expire-group=604800
 [httpserver]
 server=on
 port=8000
-<% end %>
+<% end -%>
 
 <% if @smtpserver -%>
 #[smtp]
@@ -97,7 +97,7 @@ port=8000
 #group=local,critical-consumer-group
 #group=local,other-consumer-group
 #interval=60
-<% end %>
+<% end -%>
 
 <% if @httpnotifier -%>
 #[httpnotifier]
@@ -107,4 +107,4 @@ port=8000
 #extra=tier=STG
 #template-post=config/default-http-post.tmpl
 #template-delete=config/default-http-delete.tmpl
-<% end %>
+<% end -%>
