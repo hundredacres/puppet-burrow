@@ -38,7 +38,7 @@ lock-path=<%= @zookeeper_lock_path %>
 <% end -%>
 
 <% scope['::burrow::kafka_cluster'].each do |k,v| -%>
-[kafka <%= k['name'] %>]
+[kafka <%= k %>]
 <% v['broker'].each do |h| -%>
 broker=<%= h %>
 <% end -%>
@@ -53,6 +53,9 @@ zookeeper-port=<%= v['zkport'] %>
 <% end -%>
 <% if v['zkpath'] -%>
 zookeeper-path=<%= v['zkpath'] %>
+<% end -%>
+<% if v['zkoffsets'] -%>
+zookeeper-offsets=true
 <% end -%>
 <% if v['offsetstopic'] -%>
 offsets-topic=<%= v['offsetstopic'] %>
