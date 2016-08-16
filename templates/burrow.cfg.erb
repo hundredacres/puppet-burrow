@@ -42,20 +42,20 @@ lock-path=<%= @zookeeper_lock_path %>
 <% v['broker'].each do |h| -%>
 broker=<%= h %>
 <% end -%>
-<% if k['broker_port'] -%>
-broker-port=<%= k['broker_port'] %>
+<% if v['broker_port'] -%>
+broker-port=<%= v['broker_port'] %>
 <% end -%>
 <% v['zookeeper'].each do |z| -%>
 zookeeper=<%= z %>
 <% end -%>
-<% if k['zkport'] -%>
-zookeeper-port=<%= k['zkport'] %>
+<% if v['zkport'] -%>
+zookeeper-port=<%= v['zkport'] %>
 <% end -%>
-<% if k['zkpath'] -%>
-zookeeper-path=<%= k['zkpath'] %>
+<% if v['zkpath'] -%>
+zookeeper-path=<%= v['zkpath'] %>
 <% end -%>
-<% if k['offsetstopic'] -%>
-offsets-topic=<%= k['offsetstopic'] %>
+<% if v['offsetstopic'] -%>
+offsets-topic=<%= v['offsetstopic'] %>
 <% end -%>
 <% end -%>
 
