@@ -38,7 +38,7 @@ lock-path=<%= @zookeeper_lock_path %>
 <% end -%>
 
 <% scope['::burrow::kafka_cluster'].each do |k,v| -%>
-[kafka <%= k %>]
+[kafka "<%= k %>"]
 <% v['broker'].each do |h| -%>
 broker=<%= h %>
 <% end -%>
