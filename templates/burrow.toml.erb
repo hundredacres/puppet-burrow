@@ -1,0 +1,51 @@
+[general]
+<% if @pidfile -%>
+pidfile=<%= @pidfile %>
+<% end -%>
+stdout-logfile="burrow.out"
+access-control-allow-origin="mysite.example.com"
+
+[logging]
+filename=<%= @logdir %>/burrow.log
+level="info"
+maxsize=100
+maxbackups=30
+maxage=10
+use-localtime=false
+use-compression=true
+
+[zookeeper]
+servers=[<%= scope['::burrow::zookeeper_host'].map{ |v| "#{v}:<%= @zookeeper_port %>" }.join(',') %>]
+timeout=6
+root-path="/burrow"
+
+[client-profile.test]
+client-id="burrow-test"
+kafka-version="0.10.0"
+
+<% scope['::burrow::kafka_cluster'].each do |k,v| -%>
+[cluster.<%= k %>]
+class-name="kafka"
+servers=[ <%= v['broker'].map{ |h| "#{h}:<%= v['broker_port'] %>" }.join(',') %> ]
+kafka-version="0.10.1.0"
+client-profile="test"
+topic-refresh=120
+offset-refresh=30
+<% end -%>
+
+<% scope['::burrow::kafka_consumer'].each do |k,v| -%>
+[consumer.<%= k %>]
+class-name="kafka"
+cluster="prod"
+servers=[ <%= v['broker'].map{ |h| "#{h}:<%= v['broker_port'] %>" }.join(',') %> ]
+<% end -%>
+
+[httpserver.default]
+address=":8000"
+
+[storage.default]
+class-name="inmemory"
+workers=20
+intervals=15
+expire-group=604800
+min-distance=1
