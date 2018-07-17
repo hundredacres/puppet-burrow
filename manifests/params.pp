@@ -20,7 +20,7 @@ class burrow::params {
       fail("${::operatingsystem} not supported")
     }
   }
-  $logdir              = 'log'
+  $logdir              = '/var/log'
   $logconfig           = 'config/logging.cfg'
   $pidfile             = 'burrow.pid'
   $client_id           = 'burrow-lagchecker'
@@ -30,6 +30,7 @@ class burrow::params {
   $zookeeper_timeout   = 6
   $zookeeper_lock_path = '/burrow/notifier'
   $kafka_cluster       = {}
+  $kafka_consumer      = {}
   $storm_cluster       = {}
   $service_restart     = true
   $httpserver          = true

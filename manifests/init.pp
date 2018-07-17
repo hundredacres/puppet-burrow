@@ -22,6 +22,7 @@ class burrow (
   $zookeeper_timeout   = $::burrow::params::zookeeper_timeout,
   $zookeeper_lock_path = $::burrow::params::zookeeper_lock_path,
   $kafka_cluster       = $::burrow::params::kafka_cluster,
+  $kafka_consumer      = $::burrow::params::kafka_consumer,
   $storm_cluster       = $::burrow::params::storm_cluster,
   $service_restart     = $::burrow::params::service_restart,
   $httpserver          = $::burrow::params::httpserver,

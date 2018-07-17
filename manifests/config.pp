@@ -19,18 +19,18 @@ class burrow::config (
   $httpnotifier        = $::burrow::params::httpnotifier,
 ) {
 
-  $server_config = deep_merge($burrow::params::burrow_config_defaults, $burrow::params::burrow_config)
+  #$server_config = deep_merge($burrow::params::burrow_config_defaults, $burrow::params::burrow_config)
 
   $config_notify = $service_restart ? {
     false   => undef,
     default => Service[$::burrow::service_name],
   }
 
-  file { '/etc/burrow/config/burrow.cfg':
+  file { '/etc/burrow/config/burrow.toml':
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
-    content => template('burrow/burrow.cfg.erb'),
+    content => template('burrow/burrow.toml.erb'),
     notify  => $config_notify,
   }
 }
